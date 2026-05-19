@@ -8,15 +8,18 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  /* Thailand flag palette */
+  --color-thai-red:       #A51931;
+  --color-thai-red-dark:  #8c1528;
+  --color-thai-blue:      #2D2A6E;
+  --color-thai-blue-dark: #24215a;
+  --color-thai-blue-mid:  #3d3a8e;
+  --color-thai-blue-pale: #eeedf8;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  color-scheme: only light;
 }
 
 body {

@@ -1,65 +1,123 @@
-import Image from "next/image";
+import Link from 'next/link';
+import ProductCard from '@/components/ProductCard';
+import { PRODUCTS } from '@/lib/products';
 
-export default function Home() {
+export default function HomePage() {
+  const featured = PRODUCTS.slice(0, 4);
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <>
+      {/* Hero — Thai red, clean and vibrant */}
+      <section className="bg-thai-red text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+          <div className="max-w-2xl">
+            <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 px-3 py-1 rounded-full text-sm text-blue-100 mb-6">
+              🇹🇭 Platform Borong B2B Produk Thailand
+            </div>
+            <h1 className="text-3xl sm:text-5xl font-bold leading-tight tracking-tight">
+              Borong Produk Thai<br />
+              <span className="text-thai-blue-pale">Terus dari Thailand</span>
+            </h1>
+            <p className="mt-4 text-red-100 text-lg leading-relaxed max-w-xl">
+              Khas untuk peniaga Malaysia — restoran, gerai hawker, kedai runcit.
+              Sistem harga tier mengikut kuantiti. Semakin banyak, semakin murah.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-4">
+              <Link
+                href="/catalog"
+                className="bg-white text-thai-red font-bold px-6 py-3 rounded-full hover:bg-thai-blue-pale transition-colors"
+              >
+                Lihat Katalog Produk
+              </Link>
+              <Link
+                href="/register-merchant"
+                className="bg-thai-blue text-white font-bold px-6 py-3 rounded-full hover:bg-thai-blue-mid transition-colors"
+              >
+                Daftar Akaun Peniaga
+              </Link>
+            </div>
+            <div className="mt-10 flex flex-wrap gap-8 text-sm">
+              <div>
+                <div className="text-2xl font-bold text-thai-blue-pale">500+</div>
+                <div className="text-red-200">Produk Thai</div>
+              </div>
+              <div>
+                <div className="text-2xl font-bold text-thai-blue-pale">3 Tier</div>
+                <div className="text-red-200">Sistem Harga MOQ</div>
+              </div>
+              <div>
+                <div className="text-2xl font-bold text-thai-blue-pale">Semenanjung</div>
+                <div className="text-red-200">Penghantaran Malaysia</div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* Tier Explanation */}
+      <section className="bg-white py-12 border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-bold text-gray-800 mb-1">Sistem Harga Tier (MOQ)</h2>
+          <p className="text-gray-500 mb-8 text-sm">Semakin banyak kuantiti pesanan, semakin rendah harga seunit.</p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div className="border border-gray-200 rounded-xl p-5">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="w-3 h-3 bg-gray-300 rounded-full inline-block" />
+                <span className="font-bold text-gray-700">Tier 1 — Runcit</span>
+              </div>
+              <p className="text-sm text-gray-500">Kuantiti kecil. Sesuai untuk ujian produk baru atau pesanan kecil.</p>
+            </div>
+            <div className="border border-thai-blue/30 bg-thai-blue-pale rounded-xl p-5">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="w-3 h-3 bg-thai-blue rounded-full inline-block" />
+                <span className="font-bold text-thai-blue">Tier 2 — Dealer</span>
+              </div>
+              <p className="text-sm text-thai-blue/70">Kuantiti sederhana. Harga lebih kompetitif untuk margin lebih baik.</p>
+            </div>
+            <div className="border border-green-200 bg-green-50 rounded-xl p-5">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="w-3 h-3 bg-green-500 rounded-full inline-block" />
+                <span className="font-bold text-green-800">Tier 3 — Borong</span>
+              </div>
+              <p className="text-sm text-green-600">Kuantiti besar. Harga terendah untuk keuntungan maksimum.</p>
+            </div>
+          </div>
         </div>
-      </main>
-    </div>
+      </section>
+
+      {/* Featured Products */}
+      <section className="py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between mb-6">
+            <div>
+              <h2 className="text-2xl font-bold text-gray-800">Produk Pilihan</h2>
+              <p className="text-gray-500 text-sm mt-0.5">Snek Thai, Makanan Kering & Sos</p>
+            </div>
+            <Link href="/catalog" className="text-sm font-semibold text-thai-red hover:underline">
+              Lihat Semua →
+            </Link>
+          </div>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            {featured.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA — Thai blue accent on white */}
+      <section className="bg-thai-blue-pale border-y border-thai-blue/20 py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-2xl sm:text-3xl font-bold text-thai-blue">Bersedia untuk mula berniaga?</h2>
+          <p className="mt-2 text-thai-blue/70">Daftar sebagai peniaga borong dan dapatkan akses harga eksklusif.</p>
+          <Link
+            href="/register-merchant"
+            className="mt-6 inline-block bg-thai-red text-white font-bold px-8 py-3 rounded-full hover:bg-thai-red-dark transition-colors"
+          >
+            Daftar Sekarang — Percuma
+          </Link>
+        </div>
+      </section>
+    </>
   );
 }
